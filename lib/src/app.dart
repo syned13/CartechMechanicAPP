@@ -1,3 +1,4 @@
+import 'package:cartech_mechanic_app/src/resources/push_notification.dart';
 import 'package:cartech_mechanic_app/src/ui/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cartech_mechanic_app/src/ui/splash_screen.dart';
@@ -11,7 +12,9 @@ class CartechMechanicApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
+    PushNotificationsManager pushNotificationsManager = PushNotificationsManager();
+    pushNotificationsManager.init();
     return MaterialApp(
       title: 'Cartech',
       theme: ThemeData(

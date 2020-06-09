@@ -13,8 +13,6 @@ class CartechMechanicApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context)  {
-    PushNotificationsManager pushNotificationsManager = PushNotificationsManager();
-    pushNotificationsManager.init();
     return MaterialApp(
       title: 'Cartech',
       theme: ThemeData(

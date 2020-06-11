@@ -20,12 +20,11 @@ class MainScreenState extends State<MainScreen>{
   int _currentIndex = 0;
 //  List<String> _appbarTitles = ["Areas", "Reservas", "Perfil"];
   List<Widget> _children = [MechanicDashboardScreen(), ProfileScreen()];
-  PushNotificationsManager pushNotificationsManager = PushNotificationsManager();
+    PushNotificationsManager pushNotificationsManager = PushNotificationsManager();
 
   @override
   Widget build(BuildContext context) {
     pushNotificationsManager.init(onMessageHandler);
-
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       bottomNavigationBar: BottomNavigationBar(
@@ -47,9 +46,10 @@ class MainScreenState extends State<MainScreen>{
       body: _children[_currentIndex],
     );
   }
-  
-   void onMessageHandler(Map<String, dynamic> message){
+
+  void onMessageHandler(Map<String, dynamic> message){
     _showDialog(message['notification']['title'], message['notification']['body']);
+    print("HERE");
   }
 
   void _showDialog(String message, String body) {
@@ -74,7 +74,7 @@ class MainScreenState extends State<MainScreen>{
       },
     );
   }
-  
+
   void onTabTapped(int index){
     setState(() {
       _currentIndex = index;

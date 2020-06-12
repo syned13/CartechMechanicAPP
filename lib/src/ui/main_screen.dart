@@ -1,30 +1,27 @@
 import 'package:cartech_mechanic_app/src/resources/push_notification.dart';
-import 'package:cartech_mechanic_app/src/resources/utils.dart';
 import 'package:cartech_mechanic_app/src/ui/mechanic_dashboard_screen.dart';
 import 'package:cartech_mechanic_app/src/ui/profile_screen.dart';
 import 'package:cartech_mechanic_app/src/ui/theme_resources.dart';
 import 'package:flutter/material.dart';
 
-
-class MainScreen extends StatefulWidget{
-
-
+class MainScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return MainScreenState();
   }
 }
 
-class MainScreenState extends State<MainScreen>{
-
+class MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
-//  List<String> _appbarTitles = ["Areas", "Reservas", "Perfil"];
+
   List<Widget> _children = [MechanicDashboardScreen(), ProfileScreen()];
-    PushNotificationsManager pushNotificationsManager = PushNotificationsManager();
+  PushNotificationsManager pushNotificationsManager =
+      PushNotificationsManager();
 
   @override
   Widget build(BuildContext context) {
     pushNotificationsManager.init(onMessageHandler);
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       bottomNavigationBar: BottomNavigationBar(
@@ -42,13 +39,13 @@ class MainScreenState extends State<MainScreen>{
           )
         ],
       ),
-
       body: _children[_currentIndex],
     );
   }
 
-  void onMessageHandler(Map<String, dynamic> message){
-    _showDialog(message['notification']['title'], message['notification']['body']);
+  void onMessageHandler(Map<String, dynamic> message) {
+    _showDialog(
+        message['notification']['title'], message['notification']['body']);
     print("HERE");
   }
 
@@ -75,7 +72,7 @@ class MainScreenState extends State<MainScreen>{
     );
   }
 
-  void onTabTapped(int index){
+  void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
@@ -85,5 +82,4 @@ class MainScreenState extends State<MainScreen>{
   void initState() {
     super.initState();
   }
-  
 }

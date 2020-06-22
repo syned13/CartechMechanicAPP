@@ -1,3 +1,5 @@
+enum OrderListType { Current, Past }
+
 class ServiceOrder {
   int serviceOrderId;
   int serviceId;

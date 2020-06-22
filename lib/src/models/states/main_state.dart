@@ -15,3 +15,13 @@ class MainStateDoneLoadingOrders extends MainState {
 
   MainStateDoneLoadingOrders(this.orders);
 }
+
+class MainStateLoadingAssignOrder extends MainState{}
+
+class MainStateAssignOrderDone extends MainState{}
+
+class MainStateAssignOrderError extends MainState{
+  String errorMessage;
+
+  MainStateAssignOrderError(errorMessage);
+}

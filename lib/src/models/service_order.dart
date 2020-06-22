@@ -11,6 +11,7 @@ class ServiceOrder {
   String cancelledAt;
   double lat;
   double lng;
+  double distanceTo;
 
   ServiceOrder(
       {this.serviceOrderId,

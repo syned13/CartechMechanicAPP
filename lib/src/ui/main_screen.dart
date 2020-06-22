@@ -1,5 +1,6 @@
 import 'package:cartech_mechanic_app/src/resources/push_notification.dart';
 import 'package:cartech_mechanic_app/src/ui/mechanic_dashboard_screen.dart';
+import 'package:cartech_mechanic_app/src/ui/order_list_screen.dart';
 import 'package:cartech_mechanic_app/src/ui/profile_screen.dart';
 import 'package:cartech_mechanic_app/src/ui/theme_resources.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  List<Widget> _children = [MechanicDashboardScreen(), ProfileScreen()];
+  List<Widget> _children = [MechanicDashboardScreen(), OrderListScreen(), ProfileScreen()];
   PushNotificationsManager pushNotificationsManager =
       PushNotificationsManager();
 
@@ -30,8 +31,12 @@ class MainScreenState extends State<MainScreen> {
         backgroundColor: Resources.MainColor,
         items: [
           BottomNavigationBarItem(
-            title: Text("Sevicios"),
-            icon: Icon(Icons.build),
+            title: Text("Inicio"),
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            title: Text("Ordenes"),
+            icon: Icon(Icons.shopping_cart),
           ),
           BottomNavigationBarItem(
             title: Text("Perfil"),

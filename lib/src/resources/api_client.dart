@@ -5,8 +5,8 @@ import 'package:cartech_mechanic_app/src/models/mechanic.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
-//  static final String API_ENDPOINT = "https://api-cartech.herokuapp.com";
-  static final String API_ENDPOINT = "http://10.0.2.2:5000";
+  static final String API_ENDPOINT = "https://api-cartech.herokuapp.com";
+//  static final String API_ENDPOINT = "http://10.0.2.2:5000";
 
   static Future<String> postMechanic(Mechanic user, String path) async {
     Map<String, String> headers = Map();

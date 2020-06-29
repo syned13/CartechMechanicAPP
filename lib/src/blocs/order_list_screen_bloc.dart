@@ -8,7 +8,6 @@ import 'package:rxdart/rxdart.dart';
 
 import 'bloc.dart';
 
-
 class OrderListScreenBloc implements Bloc {
   BehaviorSubject<OrdersListState> _currentOrdersController = BehaviorSubject();
   BehaviorSubject<OrdersListState> _pasOrdersController = BehaviorSubject();
@@ -22,13 +21,13 @@ class OrderListScreenBloc implements Bloc {
   void initCurrentOrders() async {
     _currentOrdersController.sink.add(OrdersListStateLoading());
     List<ServiceOrder> orders;
-    try{
+    try {
       orders = await getOrderList("/order?status=in_progress");
-    }
-    catch(Exception){
+    } catch (Exception) {
       // TODO: parse error
-     _currentOrdersController.sink.add(OrdersListStateError(Exception.toString()));
-     return;
+      _currentOrdersController.sink
+          .add(OrdersListStateError(Exception.toString()));
+      return;
     }
 
     _currentOrdersController.sink.add(OrderListStateDone(orders));
@@ -37,10 +36,9 @@ class OrderListScreenBloc implements Bloc {
   void initPastOrders() async {
     _pasOrdersController.sink.add(OrdersListStateLoading());
     List<ServiceOrder> orders;
-    try{
+    try {
       orders = await getOrderList("/order?status=finished");
-    }
-    catch(Exception){
+    } catch (Exception) {
       // TODO: parse error
       _pasOrdersController.sink.add(OrdersListStateError(Exception.toString()));
       return;
@@ -54,7 +52,8 @@ class OrderListScreenBloc implements Bloc {
     String response = await ApiClient.get(token, path);
 
     List<dynamic> ordersMaps = json.decode(response);
-    List<ServiceOrder> orders = ordersMaps.map( (order) => ServiceOrder.fromJson(order)).toList();
+    List<ServiceOrder> orders =
+        ordersMaps.map((order) => ServiceOrder.fromJson(order)).toList();
 
     return orders;
   }
